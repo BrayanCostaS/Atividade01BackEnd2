@@ -1,9 +1,10 @@
 import dados from '../dados/dados-cliente.json';
-import Cliente from '../modelo/cliente';
+import Produto from '../modelo/produto';
 
-export default class DadosCliente{
 
-    public static dados():Array<Cliente>{
+export default class DadosProduto{
+
+    public static dados():Array<Produto>{
 
         //Converte os dados para uma string no formato json
         const json_para_string = JSON.stringify(dados);
@@ -12,7 +13,7 @@ export default class DadosCliente{
         const json_para_objeto = JSON.parse(json_para_string);
 
         //Array de Clientes
-        const listaClientes:Array<Cliente> = [];
+        const listaProdutos:Array<Produto> = [];
 
         //converte a lista de objetos genéricos para 
         //uma lista de objetos do tipo Cliente
@@ -20,14 +21,14 @@ export default class DadosCliente{
 
             //vamos percorrer elemento por elemento 
             //e criar um objeto Cliente
-            let cliente = new Cliente(element.codigo, element.descricao, 
+            let produto = new Produto(element.codigo, element.descricao, 
                 element.marca,element.valor);
 
             //adiciona o objeto Cliente ao array de Clientes
-            listaClientes.push(cliente);
+            listaProdutos.push(produto);
         });
 
         //Retorna a lista de objetos de clientes
-        return listaClientes;
+        return listaProdutos;
     }
 }

@@ -1,62 +1,62 @@
 import DadosCliente from "../../util/dados-cliente";
-import IRepositorioCliente from "../repositorio-cliente";
-import Cliente from "../../modelo/cliente";
+import IRepositorioProduto from "../repositorio-cliente";
+import Produto from "../../modelo/produto";
 
-export default class RepositorioClienteImpl implements IRepositorioCliente{
+export default class RepositorioProdutoImpl implements IRepositorioProduto{
     
     //Array de Clientes
-    private listaClientes:Array<Cliente> = [];
+    private listaProduto:Array<Produto> = [];
     
     constructor(){
         //Carrega as informações contidas no arquivo json
-        this.listaClientes = DadosCliente.dados();
+        this.listaProduto = DadosCliente.dados();
     }
 
-    public listarTodos():Array<Cliente>{
-        return this.listaClientes;
+    public listarTodos():Array<Produto>{
+        return this.listaProduto;
     }
 
-    public buscarPorId(codigo:number): Cliente {
-        return this.listaClientes.find(
-            cliente => cliente.codigo == codigo
+    public buscarPorCodigo(codigo:number): Produto {
+        return this.listaProduto.find(
+            produto => produto.codigo == codigo
         );
     }
 
-    public salvar(cliente:Cliente): void{
-        this.listaClientes.push(cliente);
+    public salvar(produto:Produto): void{
+        this.listaProduto.push(produto);
     }
 
-    public atualizar(codigo:number, cliente:Cliente): void{
+    public atualizar(codigo:number, produto:Produto): void{
         //Encontra o índice do registro que será removido
-        let indice = this.listaClientes.findIndex(
-            cliente => cliente.codigo == codigo
+        let indice = this.listaProduto.findIndex(
+            produto => produto.codigo == codigo
         );
 
         //Atualiza o registro
-        this.listaClientes[indice] = cliente;
+        this.listaProduto[indice] = produto;
     }
 
     public excluir(codigo:number): void{
         //Encontra o índice do registro que será removido
-        let indice = this.listaClientes.findIndex(
-            cliente => cliente.codigo == codigo
+        let indice = this.listaProduto.findIndex(
+            produto => produto.codigo == codigo
         );
 
         //Remove o registo do array
-        this.listaClientes.splice(indice, 1);
+        this.listaProduto.splice(indice, 1);
     }
 
     //Apenas para simular a chave incremental do banco de dados
     //Retorna o próximo valor do identificado para que não 
     //haja duplicidade de identificadores
-    public obterProximoId(): number{
+    public obterProximoCodigo(): number{
         
-        if(this.listaClientes.length == 0){
+        if(this.listaProduto.length == 0){
             return 1
         }else{
             //Obtém o último registro do array
-            let ultimoRegistro = this.listaClientes[
-                this.listaClientes.length - 1
+            let ultimoRegistro = this.listaProduto[
+                this.listaProduto.length - 1
             ];
 
             //Incrementa o identificador 

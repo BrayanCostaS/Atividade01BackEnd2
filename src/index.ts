@@ -1,38 +1,39 @@
-import Cliente from './modelo/cliente';
+import Produto from './modelo/produto';
 import RepositorioClienteImpl from './repositorio/impl/repositorio-cliente-impl';
 
 const repositorio = new RepositorioClienteImpl();
-
+/*
 //Lista todos os registros existentes
 console.log("-------- Listar dados ------");
 console.log(repositorio.listarTodos());
 
-//Cria um novo registro
-const incluirCliente = new Cliente(
-    repositorio.obterProximoId(), 
-    "Marcelo Cavalcante",
-    "marcelo@teste.com.br",
-    2003
+//Cria um novo produto
+ const incluirCliente = new Produto(
+    repositorio.obterProximoCodigo(), 
+    "macarrao",
+    "XXX",
+    3.29
 );
 
 //Salva o registo
 console.log("-------- Salvar Cliente ------");
 repositorio.salvar(incluirCliente);
-console.log(repositorio.listarTodos());
+console.log(repositorio.listarTodos());*/
 
-//Busca pelo ID
-console.log("-------- Buscar por ID ------");
-const buscaPesso = repositorio.buscarPorId(2);
+//Busca pelo codigo
+console.log("-------- Buscar por Codigo ------");
+const buscaPesso = repositorio.buscarPorCodigo(2);
 console.log(buscaPesso);
 
 //Atualizar registro
 console.log("-------- Atualizar Registro ------");
-buscaPesso.marca = "novo_email@teste.com.br";
-buscaPesso.valor = 2000;
+buscaPesso.marca = "NOVAMARCAATUALIZADA";
+buscaPesso.valor = 1.99;
 repositorio.atualizar(buscaPesso.codigo, buscaPesso);
 console.log(repositorio.listarTodos());
 
 //Excluir registro
 console.log("-------- Excluir Registro ------");
-repositorio.excluir(2);
+repositorio.excluir(1);
 console.log(repositorio.listarTodos());
+

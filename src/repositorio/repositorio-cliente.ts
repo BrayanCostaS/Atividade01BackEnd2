@@ -1,9 +1,9 @@
-import Cliente from "../modelo/cliente";
+import Produto from "../modelo/produto";
 
-export default interface IRepositorioCliente {
-    listarTodos():Array<Cliente>;
-    buscarPorId(codigo:number): Cliente;
-    salvar(cliente:Cliente): void;
-    atualizar(codigo:number, cliente:Cliente): void;
+export default interface IRepositorioProduto {
+    listarTodos():Array<Produto>;
+    buscarPorCodigo(codigo:number): Produto;
+    salvar(cliente:Produto): void;
+    atualizar(codigo:number, cliente:Produto): void;
     excluir(codigo:number): void;
 }
